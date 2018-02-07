@@ -1,0 +1,13 @@
+<div class="col pad">
+  <div class="input-group top">
+    <input class="form-control edited"
+            placeholder="I can help you to find anything you want!" (focus)="focus()" (focusout)="unfocus()" (keyup.enter)="search($event.target.value)">
+    <div [ngClass]="classes" ><i class="fa fa-search"></i></div>
+    <div class="suggestions" *ngIf="suggestions" id="style-4">
+      <div *ngIf="!loading">
+        <suggestion-single class="row edited-row" *ngFor="let suggestion of suggestions" [book]="suggestion"></suggestion-single>
+      </div>
+      <img src="https://m.popkey.co/fe4ba7/DYALX.gif" alt="Loading" class="loading" *ngIf="loading">
+    </div>
+  </div>
+</div>
