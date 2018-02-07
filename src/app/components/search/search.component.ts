@@ -30,7 +30,8 @@ export class SearchComponent implements OnInit {
     this.goodreadsService.search(value)
       .then((res) => {
         console.log(res["docs"]);
-        this.suggestions = res["docs"].filter(e => e.cover_i != undefined).map((el) => new Book(el.title, el.cover_i));
+        this.suggestions = res["docs"].filter(e => e.cover_i != undefined && e.lccn != undefined)
+                                      .map((el) => new Book(el.lccn[0], el.title_suggest, el.cover_i));
         this.loading = false;
       }).catch((er) => {
         console.log(er);
